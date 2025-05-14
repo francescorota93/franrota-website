@@ -1,0 +1,62 @@
+This document outlines the key elements of my website, including HTML tags used, CSS properties applied, JavaScript integration, and Bootstrap features.
+The website is designed to be clean, user-friendly, and responsive, providing information about my work and research in ecological science.
+
+1. HTML Tags Used (10 Distinct Tags):
+   - <html>: Defines the root of the HTML document.
+   - <head>: Contains metadata, including the document title, links to stylesheets, and scripts.
+   - <body>: Encloses all the content that appears on the webpage.
+   - <nav>: Represents the navigation bar that provides links to other pages.
+   - <div>: A generic container used to structure the layout, including sections like navbar, jumbotron, and grid layout.
+   - <h1>, <h2>, <h3>: Heading tags used to define headings and subheadings on the page.
+   - <p>: Paragraph tag used to display descriptive text content.
+   - <a>: Anchor tag used for navigation links and buttons to other pages.
+   - <ul> and <li>: Used for listing items (although not directly used on the index page, they are used elsewhere, e.g., in `webapp.html`).
+   - <button>: Used for interactive elements, such as the navbar toggle button in mobile view.
+
+2. CSS Selectors and Properties Used (5 Selectors with Different Properties):
+   - body:
+     - `font-family`: Sets the overall font style for the website.
+     - `background-color`: Sets a light green background for a nature-inspired look.
+     - `color`: Defines the default text color for readability.
+
+   - .navbar:
+     - `background-color`: Semi-transparent light color background for the navigation bar.
+     - `box-shadow`: None; provides a flat, modern look without a shadow.
+
+   - .jumbotron:
+     - `background-color`: Semi-transparent forest green for a visually appealing introductory section.
+     - `padding`: Adds spacing inside the section to make content less cramped.
+     - `border-radius`: Rounds the corners for a smoother appearance.
+     - `margin-top`: Adds vertical spacing above the jumbotron for better layout separation.
+
+   - .row .col-md-4:
+     - `background-color`: Semi-transparent forest green background for each column in the grid layout.
+     - `padding`: Adds space within the columns to improve content presentation.
+     - `margin-bottom`: Adds vertical spacing below each column for better visual separation.
+     - `border-radius`: Rounds the corners to enhance the design.
+
+   - .btn-primary, .btn-success, .btn-outline-primary:
+     - `background-color`: Sets a consistent green color for buttons (or border color for outline buttons).
+     - `border-color`: Defines the border color of buttons.
+     - `color`: Sets the text color.
+     - `:hover` states: Changes background and border colors when the user hovers over the buttons for an interactive effect.
+
+3. JavaScript Integration:
+     - `fetch`: Retrieves the content from `navbar.html`.
+     - `innerHTML`: Injects the retrieved content into the placeholder `div` with `id="navbar-placeholder"`.
+     - This method simplifies updates, ensuring changes to the navigation are made in one place.
+
+4. Bootstrap Features Used:
+   - **Responsive Grid System:** Bootstrap's grid system (`.container`, `.row`, `.col-md-4`) is used to create a responsive layout that adjusts to different screen sizes.
+   - **Navbar Component:** Utilizes Bootstrap's responsive navbar component (`navbar`, `navbar-toggler`, etc.) to create a collapsible navigation menu that functions well on both desktop and mobile devices.
+   - **Buttons:** Styled using Bootstrap button classes (`btn`, `btn-outline-primary`, `btn-success`) for consistent styling across the site.
+   - **Utility Classes:** Uses various Bootstrap utility classes (`text-center`, `mt-4`, `mb-4`) for aligning content and managing margins and spacing.
+
+5. Additional Notes:
+   - The website is designed to be clean and minimal, providing easy navigation and access to key information about Francesco Rota's work and research.
+   - The `webapp.html` page is specifically designed to showcase interactive web applications, with an emphasis on usability and engagement.
+   - Each section is purposefully designed to provide a concise overview, encouraging visitors to explore the site further.
+   - The Dynamic Navbar is built with JavaScript to dynamically load the navigation bar from a single `navbar.html` file, ensuring consistency across all pages.
+
+
+This specification provides an overview of the website's key design elements and functionality, ensuring a consistent and professional user experience across all pages.

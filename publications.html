@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pubblicazioni / Publications</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+
+  <style>
+    /* Hide English content by default */
+    .lang-en { display: none; }
+  </style>
+
+  <script>
+    // Toggle .lang-it and .lang-en visibility
+    function setLanguage(lang) {
+      localStorage.setItem('siteLang', lang);
+      document.querySelectorAll('.lang-it')
+        .forEach(el => el.style.display = (lang === 'it') ? 'block' : 'none');
+      document.querySelectorAll('.lang-en')
+        .forEach(el => el.style.display = (lang === 'en') ? 'block' : 'none');
+    }
+
+    // Load navbar and then apply saved language
+    function loadNavbar() {
+      fetch('navbar.html')
+        .then(r => r.text())
+        .then(html => {
+          document.getElementById('navbar-placeholder').innerHTML = html;
+          const saved = localStorage.getItem('siteLang') || 'it';
+          setLanguage(saved);
+        })
+        .catch(e => console.error('Error loading navbar:', e));
+    }
+
+    document.addEventListener('DOMContentLoaded', loadNavbar);
+  </script>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Publications Section -->
+  <div class="container mt-4">
+    <!-- Italian -->
+    <div class="lang-it">
+      <h2>Pubblicazioni</h2>
+      <p>
+        Puoi consultare l'elenco completo delle mie pubblicazioni di ricerca su
+        <a href="https://scholar.google.com/citations?user=qOLAfo8AAAAJ&amp;hl=de&amp;oi=ao" target="_blank">
+          Google Scholar
+        </a>.
+      </p>
+      <h3>Pubblicazioni selezionate</h3>
+    </div>
+
+    <!-- English -->
+    <div class="lang-en">
+      <h2>Publications</h2>
+      <p>
+        You can view a comprehensive list of my research publications on
+        <a href="https://scholar.google.com/citations?user=qOLAfo8AAAAJ&amp;hl=de&amp;oi=ao" target="_blank">
+          Google Scholar
+        </a>.
+      </p>
+      <h3>Selected Publications</h3>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item">
+        Li, X., Rota, F., Peter, M., Gross, A., Scherrer, D. &amp; Baltensweiler, A. (2025). Integrating Soil Properties Into Species Distribution Models Enhances Predictive Accuracy for Terricolous Macrofungi. <em>Journal of Biogeography</em>. <a href="https://doi.org/10.1111/jbi.15124" target="_blank">DOI: 10.1111/jbi.15124</a>
+      </li>
+      <li class="list-group-item">
+        Rota, F., Scherrer, D., Bergamini, A., Price, B., Walthert, L. &amp; Baltensweiler, A. (2024). Unraveling the impact of soil data quality on species distribution models of temperate forest woody plants. <em>Science of the Total Environment</em>. <a href="http://dx.doi.org/10.1016/j.scitotenv.2024.173719" target="_blank">DOI: 10.1016/j.scitotenv.2024.173719</a>
+      </li>
+      <li class="list-group-item">
+        Rota, F., Carnicero, P., Casazza, G., Nascimbene, J., Schönswetter, P. &amp; Wellstein, C. (2024). Survival in nunatak and peripheral glacial refugia of three alpine plant species is partly predicted by altitudinal segregation. <em>Molecular Ecology</em>, 00, e17343. <a href="https://doi.org/10.1111/mec.17343" target="_blank">DOI: 10.1111/mec.17343</a>
+      </li>
+      <li class="list-group-item">
+        Rota, F. (2024). The spectacle of science: A reflection on scientific method, artificial intelligence, and the tendency towards spectacularizing science. <em>BioScience</em>, biae019. <a href="https://doi.org/10.1093/biosci/biae019" target="_blank">DOI: 10.1093/biosci/biae019</a>
+      </li>
+      <li class="list-group-item">
+        Puglielli, G., Bricca, A., Chelli, S., Petruzzellis, F., Acosta, A. T., Bacaro, G., … Rota, F., … Tordoni, E. (2024). Intraspecific variability of leaf form and function across habitat types. <em>Ecology Letters</em>, 27(3), e14396. <a href="https://doi.org/10.1111/ele.14396" target="_blank">DOI: 10.1111/ele.14396</a>
+      </li>
+      <li class="list-group-item">
+        Orsenigo, S., Calderisi, G., Cogoni, D., Mondoni, A., Nascimbene, J., Rota, F., Sajeevan, T., Wijayasinghe, M., Wellstein, C. &amp; Fenu, G. (2023). Global and Regional IUCN Red List Assessments: 15. <em>Italian Botanist</em> 15: 177–191. <a href="https://doi.org/10.3897/italianbotanist.15.107040" target="_blank">DOI: 10.3897/italianbotanist.15.107040</a>
+      </li>
+      <li class="list-group-item">
+        Rota, F., Carnicero, P., Casazza, G., Nascimbene, J., Schönswetter, P. &amp; Wellstein, C. (2023). Diversified and complex survival history within which refugium? Phylogeography of the endemic plants of the Dolomites. <em>Atti riunioni scientifiche - Notiziario della Società Botanica Italiana</em>, 7 (CYBO2.203).
+      </li>
+      <li class="list-group-item">
+        Rota, F., Casazza, G., Genova, G., Midolo, G., Prosser, F., Bertolli, A., Wilhalm, T., Nascimbene, J. &amp; Wellstein, C. (2022). Topography of the Dolomites modulates range dynamics of narrow endemic plants under climate change. <em>Scientific Reports</em>, 12(1), 1–12. <a href="https://doi.org/10.1038/s41598-022-05440-3" target="_blank">DOI: 10.1038/s41598-022-05440-3</a>
+      </li>
+      <li class="list-group-item">
+        Lazzaro, L., Acosta, A. T. R., Angiolini, C., … Rota, F., et al. (2022). Gli impatti di Acacia s.l. e di Robinia pseudoacacia (Fabaceae) in Italia: risultati preliminari dal progetto collettivo del Gruppo di Lavoro Specie Alloctone. <em>Atti riunioni scientifiche - Notiziario della Società Botanica Italiana</em>, 6.
+      </li>
+      <li class="list-group-item">
+        Rota, F., Casazza, G., Wellstein, C. (2021). Quantifying habitat suitability for narrow endemic alpine plant species in the Dolomites (Italy) under predicted climate change. <em>Atti riunioni scientifiche - Notiziario della Società Botanica Italiana</em>, 5.
+      </li>
+      <li class="list-group-item">
+        Rota, F., Vidal-Rodriguez, M., Chiarucci, A., Fernández-Palacios, J. M. &amp; Whittaker, R. J. (2021). Monitoring a thermophilous woodland reforestation project in Tenerife, Canary Islands. <em>Scientia Insularum</em>, 4. <a href="https://doi.org/10.25145/j.SI.2021.04.02" target="_blank">DOI: 10.25145/j.SI.2021.04.02</a>
+      </li>
+      <li class="list-group-item">
+        Bonari, G., Fantinato, E., Lazzaro, L., Sperandii, M. G., Acosta, A. T. R., Allegrezza, M., … Rota, F. &amp; Bagella, S. (2021). Shedding light on typical species: implications for habitat monitoring. <em>Plant Sociology</em>, 58, 157. <a href="https://doi.org/10.3897/pls202058" target="_blank">DOI: 10.3897/pls202058</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

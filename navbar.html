@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <a class="navbar-brand" href="index.html">
+      <span class="lang-it">Francesco Rota</span>
+      <span class="lang-en">Francesco Rota</span>
+    </a>
+
+    <!-- Toggler (mobile) -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links + Language Switcher -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <span class="lang-it">Home</span>
+            <span class="lang-en">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="services.html">
+            <span class="lang-it">Servizi</span>
+            <span class="lang-en">Services</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">
+            <span class="lang-it">Chi Sono</span>
+            <span class="lang-en">About Me</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="publications.html">
+            <span class="lang-it">Pubblicazioni</span>
+            <span class="lang-en">Publications</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="webapp.html">
+            <span class="lang-it">Mappe</span>
+            <span class="lang-en">Web Apps</span>
+          </a>
+         <!--</li>
+       <li class="nav-item">
+          <a class="nav-link" href="photos.html">
+            <span class="lang-it">Galleria Foto</span>
+            <span class="lang-en">Photo Gallery</span>
+          </a>-->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">
+            <span class="lang-it">Contatti</span>
+            <span class="lang-en">Contact</span>
+          </a>
+        </li>
+      </ul>
+      <!-- Language Buttons -->
+      <div class="d-flex align-items-center ms-3">
+        <button class="btn btn-outline-secondary btn-sm me-2" onclick="setLanguage('it')">IT</button>
+        <button class="btn btn-outline-secondary btn-sm"        onclick="setLanguage('en')">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle all .lang-it / .lang-en elements
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang-it')
+        .forEach(el => el.style.display = (lang==='it') ? 'inline' : 'none');
+      document.querySelectorAll('.lang-en')
+        .forEach(el => el.style.display = (lang==='en') ? 'inline' : 'none');
+      // Optional: store choice in localStorage to persist across pages
+      localStorage.setItem('siteLang', lang);
+    }
+    // On load: apply saved language or default to Italian
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('siteLang') || 'it';
+      setLanguage(saved);
+    });
+  </script>
+</nav>

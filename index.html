@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homepage</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <style>
+    /* hide English by default */
+    .lang-en { display: none; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content -->
+  <div class="container mt-4">
+
+    <!-- Italian Version -->
+    <div class="lang-it">
+      <!-- Introduction Section -->
+      <div class="jumbotron text-center">
+        <h1>Benvenuti</h1>
+        <p class="lead">
+          Sono Francesco Rota, Naturalista e Agrotecnico che unisce Botanica, Ecologia e Data Science.
+        </p>
+        <p>Esplora il mio lavoro, i miei interessi di ricerca e le mie esperienze professionali.</p>
+      </div>
+
+      <!-- Featured Image Section -->
+      <div class="text-center my-4">
+        <img src="photos/sampling_2020/varie/IMG-20200601-WA0007.jpg"
+             class="img-fluid rounded shadow"
+             alt="Foto di lavoro sul campo"
+             style="max-width:50%;">
+        <p class="mt-3 text-muted">
+          Foto scattata durante le escursioni nelle Dolomiti.
+        </p>
+      </div>
+
+      <!-- Sections Summary -->
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Chi sono</h3>
+          <p>
+            Scopri il mio background, la mia formazione e l'expertise interdisciplinare che porto nei
+            campi della botanica e della scienza dei dati.
+          </p>
+          <a href="about.html" class="btn btn-outline-primary">Leggi di più</a>
+        </div>
+        <div class="col-md-4">
+          <h3>Mappe</h3>
+          <p>Esplora le webapp che ho creato.</p>
+          <a href="webapp.html" class="btn btn-outline-primary">Visualizza App</a>
+        </div>
+        <div class="col-md-4">
+          <h3>Pubblicazioni</h3>
+          <p>
+            Dai un’occhiata ai miei articoli di ricerca pubblicati su varie riviste scientifiche,
+            dalla modellazione delle specie alla filogeografia.
+          </p>
+          <a href="publications.html" class="btn btn-outline-primary">Visualizza</a>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="text-center mt-5">
+        <h2>Contattami</h2>
+        <p>
+          Se desideri collaborare o saperne di più sulla mia ricerca,
+          sentiti libero di contattarmi.
+        </p>
+        <a href="contact.html" class="btn btn-success btn-lg">Contattami</a>
+      </div>
+    </div>
+
+    <!-- English Version -->
+    <div class="lang-en">
+      <!-- Introduction Section -->
+      <div class="jumbotron text-center">
+        <h1>Welcome</h1>
+        <p class="lead">
+          I am Francesco Rota, a Natural Scientist and Agrotechnician bridging Botany, Ecology, and Data Science.
+        </p>
+        <p>Explore my work, research interests, and professional experiences.</p>
+      </div>
+
+      <!-- Featured Image Section -->
+      <div class="text-center my-4">
+        <img src="photos/sampling_2020/varie/IMG-20200601-WA0007.jpg"
+             class="img-fluid rounded shadow"
+             alt="Fieldwork Photo"
+             style="max-width:50%;">
+        <p class="mt-3 text-muted">
+          Photo taken during my excursions in the Dolomites.
+        </p>
+      </div>
+
+      <!-- Sections Summary -->
+      <div class="row">
+        <div class="col-md-4">
+          <h3>About Me</h3>
+          <p>
+            Learn more about my background, education, and the interdisciplinary expertise I bring
+            to the fields of botany and data science.
+          </p>
+          <a href="about.html" class="btn btn-outline-primary">Read More</a>
+        </div>
+        <div class="col-md-4">
+          <h3>Maps</h3>
+          <p>Explore the webapps I created.</p>
+          <a href="webapp.html" class="btn btn-outline-primary">View Apps</a>
+        </div>
+        <div class="col-md-4">
+          <h3>Publications</h3>
+          <p>
+            Check out my published research articles in various scientific journals,
+            covering topics from species distribution modeling to phylogeography.
+          </p>
+          <a href="publications.html" class="btn btn-outline-primary">View Publications</a>
+        </div>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="text-center mt-5">
+        <h2>Get in Touch</h2>
+        <p>
+          If you would like to collaborate or learn more about my research,
+          feel free to contact me.
+        </p>
+        <a href="contact.html" class="btn btn-success btn-lg">Contact Me</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navbar & Language Script -->
+  <script>
+    // load navbar
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
+      .catch(e => console.error('Error loading navbar:', e));
+
+    // toggle language
+    function setLanguage(lang) {
+      document.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? 'block' : 'none');
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+    }
+    // default
+    setLanguage('it');
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
