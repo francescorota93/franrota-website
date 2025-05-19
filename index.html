@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<!-- in <head> or just before </body> -->
 <script>
+  function setLanguage(lang) {
+    localStorage.setItem('siteLang', lang);
+    document.querySelectorAll('.lang-it')
+      .forEach(el => el.style.display = (lang==='it') ? 'block' : 'none');
+    document.querySelectorAll('.lang-en')
+      .forEach(el => el.style.display = (lang==='en') ? 'block' : 'none');
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
-    // 1) inject navbar
     fetch('navbar.html')
       .then(r => r.text())
       .then(html => {
         document.getElementById('navbar-placeholder').innerHTML = html;
-        // 2) once navbar (and its buttons) are in the DOM, re-apply the saved language
-        const saved = localStorage.getItem('siteLang') || 'it'; 
+        const saved = localStorage.getItem('siteLang') || 'it';
         setLanguage(saved);
-      });
+      })
+      .catch(e => console.error(e));
   });
 </script>
 
