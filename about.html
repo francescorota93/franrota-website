@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1) inject navbar
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+        // 2) once navbar (and its buttons) are in the DOM, re-apply the saved language
+        const saved = localStorage.getItem('siteLang') || 'it'; 
+        setLanguage(saved);
+      });
+  });
+</script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Chi Sono / About Me</title>
