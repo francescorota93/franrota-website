@@ -1,61 +1,53 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<!-- in <head> or just before </body> -->
-<script>
-  function setLanguage(lang) {
-    localStorage.setItem('siteLang', lang);
-    document.querySelectorAll('.lang-it')
-      .forEach(el => el.style.display = (lang==='it') ? 'block' : 'none');
-    document.querySelectorAll('.lang-en')
-      .forEach(el => el.style.display = (lang==='en') ? 'block' : 'none');
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('navbar.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('navbar-placeholder').innerHTML = html;
-        const saved = localStorage.getItem('siteLang') || 'it';
-        setLanguage(saved);
-      })
-      .catch(e => console.error(e));
-  });
-</script>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Servizi / Services</title>
+
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+
   <style>
-    /* hide English by default */
+    /* hide English content by default */
     .lang-en { display: none; }
   </style>
+
   <script>
-    // language toggle function
+    // Persist choice and toggle content
     function setLanguage(lang) {
-      document.querySelectorAll('.lang-it').forEach(el => {
-        el.style.display = lang === 'it' ? 'block' : 'none';
-      });
-      document.querySelectorAll('.lang-en').forEach(el => {
-        el.style.display = lang === 'en' ? 'block' : 'none';
-      });
+      localStorage.setItem('siteLang', lang);
+      document.querySelectorAll('.lang-it')
+        .forEach(el => el.style.display = (lang === 'it' ? 'block' : 'none'));
+      document.querySelectorAll('.lang-en')
+        .forEach(el => el.style.display = (lang === 'en' ? 'block' : 'none'));
     }
-    // default
-    document.addEventListener('DOMContentLoaded', () => setLanguage('it'));
+
+    // Load navbar, then apply saved language
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('navbar.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('navbar-placeholder').innerHTML = html;
+          const saved = localStorage.getItem('siteLang') || 'it';
+          setLanguage(saved);
+        })
+        .catch(e => console.error('Error loading navbar:', e));
+    });
   </script>
 </head>
 <body>
   <!-- Navbar -->
   <div id="navbar-placeholder"></div>
 
+  <!-- Services -->
   <div class="container mt-5">
     <!-- Italian Section -->
     <div class="lang-it">
       <h2 class="mb-4 text-center">I Miei Servizi</h2>
       <div class="row row-cols-1 row-cols-md-2 g-4">
+        <!-- Agrotecnico -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -67,6 +59,7 @@
             </div>
           </div>
         </div>
+        <!-- Educazione Ambientale -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -78,6 +71,7 @@
             </div>
           </div>
         </div>
+        <!-- Visite Guidate -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -89,17 +83,19 @@
             </div>
           </div>
         </div>
+        <!-- Perizie Arboree -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">Perizie Arboree e Progettazione del Verde</h5>
               <p class="card-text">
-                Valutazioni tecniche su stabilità, salute e gestione degli alberi. Progettazione del verde.
+                Valutazioni tecniche su stabilità, salute e gestione degli alberi e progettazione del verde.
               </p>
               <a href="service-perizie.html" class="btn btn-primary">Scopri di più</a>
             </div>
           </div>
         </div>
+        <!-- Monitoraggi Ambientali -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -111,12 +107,13 @@
             </div>
           </div>
         </div>
+        <!-- Analisi Dati & GIS -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">Analisi Dati &amp; GIS</h5>
               <p class="card-text">
-                Analisi, modellazione e visualizzazione di dati ambientali con strumenti GIS open source. Creazione di mappe statiche ed interattive.
+                Analisi, modellazione e visualizzazione di dati ambientali con strumenti GIS.
               </p>
               <a href="service-gis.html" class="btn btn-primary">Scopri di più</a>
             </div>
@@ -129,17 +126,19 @@
     <div class="lang-en">
       <h2 class="mb-4 text-center">My Services</h2>
       <div class="row row-cols-1 row-cols-md-2 g-4">
+        <!-- Agrotecnico -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
-              <h5 class="card-title">Agrotechnical and Environmental Consulting</h5>
+              <h5 class="card-title">Agrotechnical & Environmental Consulting</h5>
               <p class="card-text">
-                Consulting services by qualified agrotechnician and natural scientist.
+                Consulting services by a qualified agrotechnician and natural scientist.
               </p>
-              <a href="service-agronomia.html" class="btn btn-primary">Learn More</a>
+              <a href="service-agrotecnico.html" class="btn btn-primary">Learn More</a>
             </div>
           </div>
         </div>
+        <!-- Environmental Education -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -151,6 +150,7 @@
             </div>
           </div>
         </div>
+        <!-- Nature Guided Tours -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -162,17 +162,19 @@
             </div>
           </div>
         </div>
+        <!-- Tree Assessments -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
-              <h5 class="card-title">Tree Assessments and Urban Green Design</h5>
+              <h5 class="card-title">Tree Assessments & Urban Green Design</h5>
               <p class="card-text">
-                Technical tree health and stability evaluations. Urban green design.
+                Technical tree health and stability evaluations, plus urban green design.
               </p>
               <a href="service-perizie.html" class="btn btn-primary">Learn More</a>
             </div>
           </div>
         </div>
+        <!-- Environmental Monitoring -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -184,6 +186,7 @@
             </div>
           </div>
         </div>
+        <!-- Data Analysis & GIS -->
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
@@ -199,14 +202,7 @@
     </div>
   </div>
 
-  <!-- Load Navbar and Bootstrap JS -->
-  <script>
-    // insert navbar (which now includes IT/EN buttons)
-    fetch('navbar.html')
-      .then(r => r.text())
-      .then(html => document.getElementById('navbar-placeholder').innerHTML = html)
-      .catch(e => console.error('Error loading navbar:', e));
-  </script>
+  <!-- Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
