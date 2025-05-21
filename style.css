@@ -1,140 +1,136 @@
-/* ---------------------------------------------------
-   Global Variables & Reset
-   --------------------------------------------------- */
+/*────────── Theme Variables ──────────*/
 :root {
-  --green-forest: #2E8B57;
-  --dark-gray:   #4F4F4F;
-  --light-gray:  #F5F5F5;
+  --bg-light:    #f0fdf4; /* Pale mint */
+  --text-dark:   #2f4f4f; /* Dark slate gray */
+  --green-base:  #05733c; /* Deep forest green */
+  --green-dark:  #006400; /* Dark green text */
+  --green-hover: #228b22; /* Forest green */
+  --green-alt:   #2e8b57; /* Sea green */
+  --btn-success: #32cd32; /* Lime green */
   --radius:      0.5rem;
+  --transition:  0.2s ease-in-out;
 }
 
+/*────────── Global Reset & Body ──────────*/
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: Helvetica, sans-serif;
-  color: var(--dark-gray);
-  background: #fff;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
-/* ---------------------------------------------------
-   Navbar
-   --------------------------------------------------- */
+/*────────── Navbar ──────────*/
 .navbar {
-  background: var(--green-forest)!important;
-}
-.navbar .nav-link {
-  color: #fff !important;
-  font-weight: 500;
-}
-.navbar .nav-link:hover {
-  color: #f5f5f5 !important;
-}
-.navbar-brand {
-  color: #fff !important;
-  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background-color: var(--green-base) !important;
 }
 
-/* ---------------------------------------------------
-   Hero Section
-   --------------------------------------------------- */
-.hero {
-  position: relative;
-  background: url('/images/forest-hero.jpg') center/cover no-repeat;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,0.4);
-}
-.hero .hero-inner {
-  position: relative;
-  text-align: center;
-  width: 100%;
-  color: #fff;
-}
-.hero h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-.hero p.lead {
-  font-size: 1.1rem;
+.navbar-brand, .nav-link {
+  color: var(--green-dark) !important;
+  transition: color var(--transition);
 }
 
-/* ---------------------------------------------------
-   Section Titles
-   --------------------------------------------------- */
-h2.section-title {
-  color: var(--green-forest);
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 700;
+.nav-link:hover {
+  color: var(--green-hover) !important;
 }
 
-/* ---------------------------------------------------
-   Cards
-   --------------------------------------------------- */
-.card {
-  border: none;
+/*────────── Hero / Jumbotron ──────────*/
+.jumbotron {
+  background-color: rgba(50,205,50, 0.1); /* subtle lime tint */
+  color: var(--green-dark);
+  padding: 3rem 2rem;
   border-radius: var(--radius);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  margin: 2rem 0;
+  text-align: center;
+  transition: background-color var(--transition);
 }
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+
+.jumbotron:hover {
+  background-color: rgba(34,139,34, 0.1);
 }
-.card-title {
-  color: var(--green-forest);
-  font-weight: 600;
+
+/*────────── Sections (Columns) ──────────*/
+.row .col-md-4 {
+  background-color: rgba(255,255,255,0.9);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
+
+.row .col-md-4:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/*────────── Buttons ──────────*/
 .btn-primary {
-  background: var(--green-forest);
-  border-color: var(--green-forest);
-}
-.btn-primary:hover {
-  background: #276746;
-  border-color: #276746;
-}
-
-/* ---------------------------------------------------
-   Stats / Info Bar
-   --------------------------------------------------- */
-.info-bar {
-  background: var(--light-gray);
-  padding: 2rem 0;
-}
-.info-bar .info-item {
-  text-align: center;
-}
-.info-bar .info-item i {
-  font-size: 2rem;
-  color: var(--green-forest);
-  margin-bottom: 0.5rem;
-}
-.info-bar .info-item h3 {
-  margin: 0.5rem 0;
-  font-weight: 700;
-}
-
-/* ---------------------------------------------------
-   Footer
-   --------------------------------------------------- */
-footer.site-footer {
-  background: var(--dark-gray);
-  color: #eee;
-  padding: 1.5rem 0;
-  text-align: center;
-}
-footer.site-footer a {
+  background-color: var(--green-hover);
+  border-color: var(--green-hover);
   color: #fff;
-  margin: 0 0.5rem;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.btn-primary:hover {
+  background-color: var(--green-alt);
+  border-color: var(--green-alt);
+}
+
+.btn-outline-primary {
+  color: var(--green-hover);
+  border-color: var(--green-hover);
+  transition: all var(--transition);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--green-hover);
+  color: #fff;
+}
+
+/* Success variant */
+.btn-success {
+  background-color: var(--btn-success);
+  border-color: var(--btn-success);
+  color: #fff;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.btn-success:hover {
+  background-color: #3cb371;  /* Medium sea green */
+  border-color: #3cb371;
+}
+
+/*────────── Contact CTA ──────────*/
+.contact-cta {
+  background-color: rgba(34,139,34,0.2);
+  padding: 2rem;
+  border-radius: var(--radius);
+  margin: 2rem 0;
+  color: #fff;
+  text-align: center;
+}
+
+/*────────── Utility Classes ──────────*/
+.text-center { text-align: center; }
+.mt-3       { margin-top: 1rem; }
+.mt-4       { margin-top: 1.5rem; }
+.mb-4       { margin-bottom: 1.5rem; }
+.p-3        { padding: 1rem; }
+
+/*────────── Example Box ──────────*/
+.box {
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  background: #fff;
+  border-radius: var(--radius);
 }
