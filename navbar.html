@@ -1,87 +1,91 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
   <div class="container-fluid">
     <!-- Brand -->
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand fw-bold" href="#home">
       <span class="lang-it">Francesco Rota</span>
       <span class="lang-en">Francesco Rota</span>
     </a>
 
-    <!-- Toggler (mobile) -->
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false"
-            aria-label="Toggle navigation">
+    <!-- Mobile toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Links + Language Switcher -->
+    <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link active" href="#home">
             <span class="lang-it">Home</span>
             <span class="lang-en">Home</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="services.html">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#services">
             <span class="lang-it">Servizi</span>
             <span class="lang-en">Services</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="about.html">
+          <a class="nav-link" href="#about">
             <span class="lang-it">Chi Sono</span>
             <span class="lang-en">About Me</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="publications.html">
-            <span class="lang-it">Pubblicazioni</span>
-            <span class="lang-en">Publications</span>
+          <a class="nav-link" href="#publications">
+            <span class="lang-it">My Work</span>
+            <span class="lang-en">Il mio lavoro</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="webapp.html">
+          <a class="nav-link" href="#webapp">
             <span class="lang-it">Mappe</span>
             <span class="lang-en">Maps</span>
           </a>
-         <!--</li>
-       <li class="nav-item">
-          <a class="nav-link" href="photos.html">
-            <span class="lang-it">Galleria Foto</span>
-            <span class="lang-en">Photo Gallery</span>
-          </a>-->
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contact.html">
+          <a class="nav-link" href="#contact">
             <span class="lang-it">Contatti</span>
             <span class="lang-en">Contacts</span>
           </a>
         </li>
       </ul>
-      <!-- Language Buttons -->
+
+      <!-- Language Switcher -->
       <div class="d-flex align-items-center ms-3">
         <button class="btn btn-outline-secondary btn-sm me-2" onclick="setLanguage('it')">IT</button>
-        <button class="btn btn-outline-secondary btn-sm"        onclick="setLanguage('en')">EN</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="setLanguage('en')">EN</button>
       </div>
     </div>
   </div>
-
-  <script>
-    // Toggle all .lang-it / .lang-en elements
-    function setLanguage(lang) {
-      document.querySelectorAll('.lang-it')
-        .forEach(el => el.style.display = (lang==='it') ? 'inline' : 'none');
-      document.querySelectorAll('.lang-en')
-        .forEach(el => el.style.display = (lang==='en') ? 'inline' : 'none');
-      // Optional: store choice in localStorage to persist across pages
-      localStorage.setItem('siteLang', lang);
-    }
-    // On load: apply saved language or default to Italian
-    document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('siteLang') || 'it';
-      setLanguage(saved);
-    });
-  </script>
 </nav>
+
+<script>
+  // ===== LANGUAGE TOGGLE =====
+  function setLanguage(lang) {
+    localStorage.setItem('siteLang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? 'inline' : 'none');
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('siteLang') || 'it';
+    setLanguage(savedLang);
+  });
+
+  // ===== NAVBAR ACTIVE LINK ON SCROLL =====
+  document.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPos = window.scrollY + 200;
+    sections.forEach(sec => {
+      if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+        document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
+        const current = document.querySelector(`a[href="#${sec.id}"]`);
+        if (current) current.classList.add('active');
+      }
+    });
+  });
+</script>
