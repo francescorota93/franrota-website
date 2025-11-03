@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
   <div class="container-fluid">
     <!-- Brand -->
-    <a class="navbar-brand fw-bold" href="#home">
+    <a class="navbar-brand fw-bold" href="index.html#home">
       <span class="lang-it">Francesco Rota</span>
       <span class="lang-en">Francesco Rota</span>
     </a>
@@ -16,37 +16,31 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#home">
+          <a class="nav-link active" href="index.html#home">
             <span class="lang-it">Home</span>
             <span class="lang-en">Home</span>
           </a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#services">
-            <span class="lang-it">Servizi</span>
-            <span class="lang-en">Services</span>
-          </a>
-        </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="#about">
+          <a class="nav-link" href="index.html#about">
             <span class="lang-it">Chi Sono</span>
             <span class="lang-en">About Me</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#publications">
-            <span class="lang-it">My Work</span>
-            <span class="lang-en">Il mio lavoro</span>
+          <a class="nav-link" href="index.html#My Work">
+            <span class="lang-it">Pubblicazioni</span>
+            <span class="lang-en">Publications</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#webapp">
+          <a class="nav-link" href="index.html#webapp">
             <span class="lang-it">Mappe</span>
             <span class="lang-en">Maps</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">
+          <a class="nav-link" href="index.html#contact">
             <span class="lang-it">Contatti</span>
             <span class="lang-en">Contacts</span>
           </a>
@@ -55,8 +49,8 @@
 
       <!-- Language Switcher -->
       <div class="d-flex align-items-center ms-3">
-        <button class="btn btn-outline-secondary btn-sm me-2" onclick="setLanguage('it')">IT</button>
-        <button class="btn btn-outline-secondary btn-sm" onclick="setLanguage('en')">EN</button>
+        <button class="btn btn-outline-secondary btn-sm me-2" id="btn-it">IT</button>
+        <button class="btn btn-outline-secondary btn-sm" id="btn-en">EN</button>
       </div>
     </div>
   </div>
@@ -66,25 +60,36 @@
   // ===== LANGUAGE TOGGLE =====
   function setLanguage(lang) {
     localStorage.setItem('siteLang', lang);
-    document.documentElement.lang = lang;
-    document.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? 'inline' : 'none');
-    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+    document.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? 'block' : 'none');
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+
+    // update aria-pressed for buttons
+    const btnIt = document.getElementById('btn-it');
+    const btnEn = document.getElementById('btn-en');
+    if(btnIt) btnIt.setAttribute('aria-pressed', lang === 'it');
+    if(btnEn) btnEn.setAttribute('aria-pressed', lang === 'en');
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('siteLang') || 'it';
     setLanguage(savedLang);
+
+    // attach click events to buttons
+    document.getElementById('btn-it').addEventListener('click', () => setLanguage('it'));
+    document.getElementById('btn-en').addEventListener('click', () => setLanguage('en'));
   });
 
-  // ===== NAVBAR ACTIVE LINK ON SCROLL =====
+  // ===== ACTIVE LINK ON INDEX SCROLL =====
   document.addEventListener('scroll', () => {
+    if(!window.location.href.includes('index.html') && window.location.pathname !== '/') return;
+
     const sections = document.querySelectorAll('section[id]');
     const scrollPos = window.scrollY + 200;
     sections.forEach(sec => {
       if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
         document.querySelectorAll('.nav-link').forEach(a => a.classList.remove('active'));
         const current = document.querySelector(`a[href="#${sec.id}"]`);
-        if (current) current.classList.add('active');
+        if(current) current.classList.add('active');
       }
     });
   });
